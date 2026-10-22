@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ArrayList<E> implements List<E> {
     private int arrSize;
     // array declaration
@@ -23,34 +25,52 @@ public class ArrayList<E> implements List<E> {
 
     //implement append
     @Override
-    public void append(E item) {
-        assert curr >= 0 && curr < listSize : "invalid position i guess";
-        listArray[listSize] = item;
+    public void append(E item) { // add item to last index
+        assert  listSize<arrSize : "full";
+        if(listSize == arrSize){ // to check if array is full
+            arrSize*=2;
+
+            E[] listArr = (E[]) new Object[maxLen]; // creating new array object
+
+            System.arraycopy(listArray, 0, listArr, 0, listSize); 
+            listArray = listArr;
+        }
+        listArray[listSize++] = item;
     }
 
     @Override
-    public void clear() {
+    public void clear() { // clear whole array
         listSize = 0;
         curr = 0;
     }
 
     @Override
-    public void insert(E item) {
-        assert listSize < arrSize : "list is full";
+    public void insert(E item) { // insert item at cuu pos
+        // assert listSize < arrSize : "list is full";
         assert curr >= 0 && curr < listSize : "invalid position i guess";
-        for (int i = listSize - 1; i > curr; i--) {
+
+        if(arrSize == listSize){ //check is array is full
+            arrSize*=2;
+            E[] listArr = (E[]) new Object[arrSize];
+
+            System.arraycopy(listArray, 0, listArr, 0, listSize);
+            listArray = listArr;
+        }
+        for (int i = listSize; i > curr; i--) {
             listArray[i] = listArray[i - 1];
         }
+
         listArray[curr] = item;
+
         listSize++;
     }
 
     @Override
-    public E remove() {
+    public E remove() { //remove item at curr index
         assert listSize > 0 : "list is empy";
         assert curr >= 0 && curr < listSize : "invalid";
 
-        E removedItem = listArray[curr];
+        E removedItem = listArray[curr]; //declear rmoved item
 
         for (int i = curr; i < listSize; i++) {
             listArray[i] = listArray[i - 1];
@@ -61,38 +81,38 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
-    public void setFirst() {
+    public void setFirst() { 
         curr = 0; //ste posion to index 0
     }
 
     @Override
-    public void next() {
+    public void next() { //set pos to next
         curr += 1;
     }
 
     @Override
-    public void prev() {
+    public void prev() { //set pos to prev pos 
         curr -= 1;
     }
 
      
     @Override
-    public int length() {
+    public int length() { // to get length
         return listSize;
     }
 
-    public void setPos(int pos) {
+    public void setPos(int pos) { // set pos to inex inputed
         assert curr >= 0 && curr < listSize : "empty";
         curr = pos;
     }
 
     @Override
-    public void setValue(E val) {
+    public void setValue(E val) { // set avlue to curent index
         assert curr >= 0 && curr < listSize : "empty";
         listArray[curr] = val;
     }
     @Override
-    public E currValue(){
+    public E currValue(){ // get curr value o curr index
         assert curr >= 0 && curr < listSize : "wrong index";
         return listArray[curr];
     }
