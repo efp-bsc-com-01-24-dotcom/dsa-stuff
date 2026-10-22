@@ -5,7 +5,7 @@ public class ArrayList<E> implements List<E> {
     private int curr;
 
     private static int maxLen = 20;
-     private E[] listArray;
+    private E[] listArray;
 
     public ArrayList() {
         listArray = (E[]) new Object[maxLen];
