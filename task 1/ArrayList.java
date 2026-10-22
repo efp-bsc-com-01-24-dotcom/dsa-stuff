@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class ArrayList<E> implements List<E> {
     private int arrSize;
     // array declaration
@@ -16,7 +14,7 @@ public class ArrayList<E> implements List<E> {
         curr = 0;
     }
 
-    public ArrayList(int maxListSize) {
+    public ArrayList(int maxLen) {
         listArray = (E[]) new Object[maxLen];
         arrSize = maxLen;
         listSize = 0;
@@ -30,7 +28,7 @@ public class ArrayList<E> implements List<E> {
         if(listSize == arrSize){ // to check if array is full
             arrSize*=2;
 
-            E[] listArr = (E[]) new Object[maxLen]; // creating new array object
+            E[] listArr = (E[]) new Object[arrSize]; // creating new array object
 
             System.arraycopy(listArray, 0, listArr, 0, listSize); 
             listArray = listArr;
