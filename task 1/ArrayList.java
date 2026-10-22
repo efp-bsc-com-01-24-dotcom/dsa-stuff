@@ -91,7 +91,36 @@ public class ArrayList<E> implements List<E> {
     }
     @Override
     public E currValue(){
-         
+        assert curr >= 0 && curr < listSize : "wrong index";
+        return listArray[curr];
+    }
+    @Override // check if empty
+    public boolean isEmpty(){
+        if(listSize != 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    @Override //chec if the an item is int the curent position
+    public boolean isInList(){
+          if(curr >= 0 && curr < listSize){
+            return true ;
+          }else{return  false;}
+    }
+
+    @Override //print all elements
+    public void print(){
+        if(isEmpty()){ //check if empty
+            System.out.println("()");
+        }else{
+            System.out.print("(");
+            for(int i = 0 ;i< listSize-1;i++){
+                System.out.print(listArray[i]+" , ");
+            }
+            System.out.print(listArray[listSize-1]+")");
+        }
     }
 
 }   
