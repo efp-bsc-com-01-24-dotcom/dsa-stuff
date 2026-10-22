@@ -1,21 +1,22 @@
 public class ArrayList<E> implements List<E> {
     private int arrSize;
-    private E[] listArray; // array declaration
+    // array declaration
     private int listSize;
     private int curr;
 
-    private static int defaultSize = 20;
+    private static int maxLen = 20;
+     private E[] listArray;
 
     public ArrayList() {
-        listArray = (E[]) new Object[defaultSize];
-        arrSize = defaultSize;
+        listArray = (E[]) new Object[maxLen];
+        arrSize = maxLen;
         listSize = 0;
         curr = 0;
     }
 
     public ArrayList(int maxListSize) {
-        listArray = (E[]) new Object[maxListSize];
-        arrSize = defaultSize;
+        listArray = (E[]) new Object[maxLen];
+        arrSize = maxLen;
         listSize = 0;
         curr = 0;
     }
@@ -23,7 +24,8 @@ public class ArrayList<E> implements List<E> {
     //implement append
     @Override
     public void append(E item) {
-
+        assert curr >= 0 && curr < listSize : "invalid position i guess";
+        listArray[listSize] = item;
     }
 
     @Override
