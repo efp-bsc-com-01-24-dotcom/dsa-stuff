@@ -1,19 +1,19 @@
 public class LinkNode<T>{
     private T element;
-    private LinkNode next;
+    private LinkNode<T> next;
 
-    LinkNode(T elem , LinkNode nextNode) {
+    LinkNode(T elem , LinkNode<T> nextNode) {
         element = elem;
         next = nextNode;
     }
-    LinkNode(LinkNode nextNode) {
+    LinkNode(LinkNode<T> nextNode) {
         next = nextNode;
     }
-    LinkNode next(){
+    LinkNode<T> next(){
         return next;
     }
 
-    LinkNode setNext(LinkNode nextNode) {
+    LinkNode<T> setNext(LinkNode<T> nextNode) {
         return next = nextNode;
     }
     T element(){

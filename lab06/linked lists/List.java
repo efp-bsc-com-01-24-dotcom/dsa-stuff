@@ -22,4 +22,7 @@ interface List<E> {
     public void append(E item);
 
     public void print();
+
+    public void set_pos(int pos);
+    public E curr_value();
 }

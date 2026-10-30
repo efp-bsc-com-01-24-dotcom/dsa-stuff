@@ -10,8 +10,8 @@ public class LinkedList<E> implements List<E> {
     public LinkedList() {
         count = 0;
         head = new LinkNode<E>(null);
-        curr = new LinkNode<E>(null);
-        tail = new LinkNode<E>(null);
+        curr = head;
+        tail = curr;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class LinkedList<E> implements List<E> {
     public E currValue() {
         assert curr != null : "invalid postion";
         assert curr.next() != null : "invalid postion";
-        return (E) curr.next().element();
+        return curr.next().element();
     }
 
     @Override
@@ -95,7 +95,7 @@ public class LinkedList<E> implements List<E> {
     @Override
     public void append(E item) {
         tail.setNext(new LinkNode<E>(item, null));
-        
+
         tail = tail.next();
         count++;
 
@@ -104,12 +104,28 @@ public class LinkedList<E> implements List<E> {
     @Override
     public void print() {
         LinkNode<E> temp = head.next();
-
+        System.out.print("( ");
         while (temp != null) {
-            System.out.print(temp.element() + " ");
+            
+                System.out.print(temp.element() + " ");
+            
             temp = temp.next();
         }
 
-        System.out.println();
+        System.out.println(")");
+    }
+    @Override
+    public void set_pos(int pos){
+        assert pos<0 || pos > count : "invalid postion";
+        curr = head;
+
+        for (int i =0;i<pos;i++){
+            curr = curr.next();
+        }
+    }
+    @Override
+    public E curr_value(){
+        asserrt isInList() : "invalid postion";
+        return listArray[curr];
     }
 }
