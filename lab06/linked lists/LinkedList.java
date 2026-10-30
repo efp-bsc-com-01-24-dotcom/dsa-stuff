@@ -47,7 +47,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean isInList() {
-        return curr != null && !isEmpty();
+        return curr != null && curr.next() !=null;
     }
 
     @Override
@@ -115,6 +115,13 @@ public class LinkedList<E> implements List<E> {
         System.out.println(")");
     }
     @Override
+    public void next() {
+        if (curr.next() != null) {
+            curr = curr.next();
+        }
+    }
+
+    @Override
     public void set_pos(int pos){
         assert pos<0 || pos > count : "invalid postion";
         curr = head;
@@ -125,7 +132,7 @@ public class LinkedList<E> implements List<E> {
     }
     @Override
     public E curr_value(){
-        asserrt isInList() : "invalid postion";
-        return listArray[curr];
+        assert isInList() : "invalid postion";
+        return curr.next().element();
     }
 }

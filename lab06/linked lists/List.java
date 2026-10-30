@@ -24,5 +24,8 @@ interface List<E> {
     public void print();
 
     public void set_pos(int pos);
+
     public E curr_value();
+
+    public void next();
 }
